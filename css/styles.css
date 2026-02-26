@@ -51,8 +51,9 @@ body {
   font-size:60px;
   background: linear-gradient(90deg, var(--gold), var(--light-gold), var(--gold));
   background-size:200%;
+  background-clip:text;
   -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:transparent;
   animation: shimmer 4s linear infinite;
 }
 
