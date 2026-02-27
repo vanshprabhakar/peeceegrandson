@@ -1,37 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-  // COUNTDOWN
-  const launchDate = new Date("2026-06-01T00:00:00").getTime();
+// ================= ULTRA LUX COUNTDOWN =================
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = launchDate - now;
+const openingDate = new Date("June 1, 2026 18:00:00").getTime();
 
-    if (distance <= 0) return;
+function animateNumber(id, value) {
+  const el = document.getElementById(id);
+  if (!el) return;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-    const seconds = Math.floor((distance / 1000) % 60);
+  if (el.innerText !== value) {
+    el.classList.add("animate");
 
-    document.getElementById("days").textContent = days.toString().padStart(2, "0");
-    document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+    setTimeout(() => {
+      el.innerText = value;
+      el.classList.remove("animate");
+    }, 300);
+  }
+}
+
+setInterval(function () {
+
+  const now = new Date().getTime();
+  const distance = openingDate - now;
+
+  if (distance < 0) {
+    document.querySelector(".countdown").innerHTML =
+      "<h3 style='color:#d4af37;'>We Are Now Open</h3>";
+    return;
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2,"0");
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2,"0");
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2,"0");
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2,"0");
 
-  // SCROLL ANIMATION
-  const faders = document.querySelectorAll(".fade-in");
+  animateNumber("days", days);
+  animateNumber("hours", hours);
+  animateNumber("minutes", minutes);
+  animateNumber("seconds", seconds);
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.3 });
-
-  faders.forEach(el => observer.observe(el));
-});
+}, 1000);
