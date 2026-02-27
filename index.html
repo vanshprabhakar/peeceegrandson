@@ -11,58 +11,83 @@
 
 <body>
 
+<!-- HERO -->
 <header class="hero">
-  <div class="overlay"></div>
+  <div class="hero-overlay"></div>
+  <img src="images/palace.jpg" class="hero-bg" alt="Palace">
+
   <div class="hero-content">
     <img src="images/logo.png" class="logo" alt="Logo">
     <h1 class="gold-shimmer">PeeceeGrandson</h1>
-    <p class="tagline">Royal Palace Resort • Jabalpur</p>
-    <a href="#about" class="btn">Explore Royal Experience</a>
+    <p class="hero-subtitle">Where Royalty Celebrates</p>
+
+    <div class="hero-buttons">
+      <a href="#weddings" class="btn-primary">Plan Your Royal Wedding</a>
+      <a href="#experience" class="btn-outline">Explore The Palace</a>
+    </div>
   </div>
 </header>
 
-<section id="about" class="section fade-in">
+<!-- EXPERIENCE -->
+<section id="experience" class="section fade-in">
   <h2>Timeless Royal Grandeur</h2>
   <p>
-    A sanctuary of regal elegance where heritage meets modern luxury.
-    Designed for weddings, celebrations and royal getaways.
+    A sanctuary of emerald elegance where royal heritage meets modern luxury.
+    Designed for unforgettable weddings and grand celebrations.
   </p>
 </section>
 
-<section class="section emerald-section fade-in">
+<!-- WEDDINGS -->
+<section id="weddings" class="section emerald-section fade-in">
+  <h2>Destination Weddings in Jabalpur</h2>
+  <p>
+    Celebrate your royal wedding amidst palace architecture, lush lawns,
+    grand banquet halls and luxury suites.
+  </p>
+  <a href="#contact" class="btn-primary">Request Wedding Brochure</a>
+</section>
+
+<!-- AMENITIES -->
+<section class="section fade-in">
   <h2>Luxury Amenities</h2>
   <div class="grid">
     <div class="card">Infinity Pool</div>
     <div class="card">Royal Banquet Hall</div>
-    <div class="card">Private Suites</div>
+    <div class="card">Luxury Suites</div>
     <div class="card">Fine Dining</div>
   </div>
 </section>
 
-<section class="section fade-in">
-  <h2>Weddings & Grand Celebrations</h2>
-  <p>
-    Celebrate your royal wedding amidst emerald landscapes and palace elegance.
-  </p>
-</section>
-
+<!-- GALLERY -->
 <section class="section emerald-section fade-in">
   <h2>Gallery</h2>
   <div class="grid">
-    <div class="gallery-box"></div>
-    <div class="gallery-box"></div>
-    <div class="gallery-box"></div>
+    <img src="images/gallery1.jpg" class="gallery-img">
+    <img src="images/gallery2.jpg" class="gallery-img">
+    <img src="images/gallery3.jpg" class="gallery-img">
   </div>
 </section>
 
+<!-- COUNTDOWN -->
 <section class="section fade-in">
-  <h2>Opening Soon</h2>
+  <h2>Grand Opening</h2>
   <div class="countdown">
     <div class="time-box"><span id="days">00</span><small>Days</small></div>
     <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
     <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
     <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
   </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section fade-in">
+  <h2>Reserve Your Royal Experience</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <input type="tel" placeholder="Phone Number" required>
+    <button type="submit" class="btn-primary">Submit Inquiry</button>
+  </form>
 </section>
 
 <footer class="footer">
