@@ -1,197 +1,363 @@
-:root {
-  --gold: #d4af37;
-  --emerald-dark: #012e2b;
-  --emerald: #014d40;
+body{
+margin:0;
+background:black;
+color:white;
+font-family:'Cormorant Garamond',serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--emerald-dark);
-  color: #fff;
-  overflow-x: hidden;
+
+.hero-bg{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-/* HERO */
 
-.hero {
-  height: 100vh;
-  background: url('../images/hero-palace.jpg') center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  animation: zoom 20s infinite alternate ease-in-out;
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+rgba(0,0,0,0.2),
+rgba(0,0,0,0.75)
+);
+
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(1,46,43,0.9));
+
+/* FOG EFFECT */
+
+.fog{
+position:absolute;
+width:200%;
+height:200%;
+
+background:url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+
+opacity:.15;
+
+animation:fogmove 60s linear infinite;
+
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 20px;
+@keyframes fogmove{
+
+0%{transform:translateX(0)}
+100%{transform:translateX(-800px)}
+
 }
 
-.logo {
-  width: 100px;
-  margin-bottom: 20px;
+
+
+/* CONTENT */
+
+.hero-content{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+text-align:center;
+
+max-width:900px;
+
+width:90%;
+
+animation:fadein 2s ease;
+
 }
 
-.gold-shimmer {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(40px, 6vw, 70px);
-  background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 5s infinite linear;
+
+@keyframes fadein{
+
+0%{
+opacity:0;
+transform:translate(-50%,-40%);
 }
 
-@keyframes shimmer {
-  0% { background-position: 0%; }
-  100% { background-position: 200%; }
+100%{
+opacity:1;
+transform:translate(-50%,-50%);
 }
 
-.tagline {
-  margin: 15px 0 30px;
-  letter-spacing: 3px;
 }
 
-.buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+
+
+/* PRESENT TEXT */
+
+.present{
+
+letter-spacing:8px;
+
+font-size:13px;
+
+color:#d4af37;
+
+margin-bottom:120px;
+
 }
 
-.btn {
-  padding: 14px 35px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
+
+/* SHIMMER EFFECT */
+
+.shimmer{
+
+background:linear-gradient(
+90deg,
+#b8962e,
+#f5d76e,
+#b8962e
+);
+
+background-size:200%;
+
+-webkit-background-clip:text;
+
+color:transparent;
+
+animation:shine 6s infinite linear;
+
 }
 
-.primary {
-  background: var(--gold);
-  color: #000;
+@keyframes shine{
+
+0%{background-position:0%}
+100%{background-position:200%}
+
 }
 
-.primary:hover {
-  transform: translateY(-3px);
+
+
+/* SUBBRANDS */
+
+.subbrands{
+
+margin-top:250px;
+
 }
 
-.outline {
-  border: 1px solid var(--gold);
-  color: var(--gold);
+.subbrands p{
+
+font-size:24px;
+
+font-weight:300;
+
+margin:6px;
+
+letter-spacing:1px;
+
 }
 
-/* SECTIONS */
 
-.section {
-  padding: 100px 20px;
-  text-align: center;
+
+/* FOUNDERS */
+
+.founders{
+
+font-size:16px;
+
+margin-top:20px;
+
+margin-bottom:50px;
+
+opacity:.9;
+
 }
 
-.section.dark {
-  background: var(--emerald);
-}
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-}
-
-h2 {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(28px, 4vw, 48px);
-  color: var(--gold);
-  margin-bottom: 30px;
-}
 
 /* COUNTDOWN */
 
-.countdown {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-  gap: 25px;
-  max-width: 600px;
-  margin: auto;
+.countdown{
+
+display:flex;
+
+justify-content:center;
+
+gap:50px;
+
+margin-bottom:30px;
+
 }
 
-.time-box {
-  padding: 30px;
-  border: 1px solid var(--gold);
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
+
+
+.time-box{
+
+padding:12px 18px;
+
+border:1px solid rgba(212,175,55,.4);
+
+border-radius:6px;
+
+background:rgba(0,0,0,.25);
+
+backdrop-filter:blur(3px);
+
 }
 
-.number {
-  font-size: 40px;
-  color: var(--gold);
+
+
+.countdown span{
+
+font-size:38px;
+
+color:#d4af37;
+
+display:block;
+
 }
+
+
+
+.countdown label{
+
+font-size:12px;
+
+letter-spacing:2px;
+
+opacity:.85;
+
+}
+
+
+
+/* LOGO */
+
+.logo{
+
+width:110px;
+
+margin:25px auto;
+
+display:block;
+
+}
+
+
+
+/* TAGLINE */
+
+.tagline{
+
+font-style:italic;
+
+font-size:18px;
+
+max-width:650px;
+
+margin:auto;
+
+margin-bottom:30px;
+
+opacity:.9;
+
+}
+
+
 
 /* FORM */
 
-.form-wrapper {
-  max-width: 600px;
-  margin: 40px auto 0;
-  background: rgba(255,255,255,0.05);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid var(--gold);
+.form{
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+
+gap:12px;
+
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
+
+.form input{
+
+padding:12px;
+
+width:260px;
+
+border-radius:6px;
+
+border:none;
+
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid rgba(212,175,55,0.5);
-  background: rgba(0,0,0,0.4);
-  color: #fff;
+
+
+.form button{
+
+background:#d4af37;
+
+border:none;
+
+padding:12px 28px;
+
+font-weight:500;
+
+border-radius:6px;
+
+cursor:pointer;
+
 }
 
-textarea {
-  min-height: 120px;
-  resize: none;
+
+
+/* ENTRANCE ANIMATION */
+
+.fade-up{
+
+animation:slideup 2s ease;
+
 }
 
-.full {
-  width: 100%;
+@keyframes slideup{
+
+0%{
+opacity:0;
+transform:translateY(40px);
 }
 
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #001f1c;
+100%{
+opacity:1;
+transform:translateY(0);
 }
 
-/* ANIMATIONS */
-
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
 }
+
+
 
 /* MOBILE */
 
-@media (max-width: 768px) {
-  .buttons { flex-direction: column; }
+@media(max-width:768px){
+
+.subbrands p{
+font-size: 8px;
+}
+
+.countdown span{
+font-size:28px;
+}
+
+.present{
+margin-bottom:60px;
+}
+
+.subbrands{
+margin-top:100px;
+}
+
 }

@@ -1,45 +1,39 @@
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+const launchDate = new Date("May 31, 2026 00:00:00").getTime()
 
-// Scroll reveal animation
-window.addEventListener('scroll', function () {
-  const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < windowHeight - 100) {
-      el.classList.add('active');
-    }
-  });
-});
+setInterval(()=>{
 
-// Ultra luxury countdown
-const targetDate = new Date("June 1, 2026 00:00:00").getTime();
+const now = new Date().getTime()
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const gap = targetDate - now;
+const diff = launchDate - now
 
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
+const days = Math.floor(diff/(1000*60*60*24))
+const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60))
+const minutes = Math.floor((diff%(1000*60*60))/(1000*60))
+const seconds = Math.floor((diff%(1000*60))/1000)
 
-  const d = Math.floor(gap / day);
-  const h = Math.floor((gap % day) / hour);
-  const m = Math.floor((gap % hour) / minute);
-  const s = Math.floor((gap % minute) / second);
+animate("days",days)
+animate("hours",hours)
+animate("minutes",minutes)
+animate("seconds",seconds)
 
-  document.getElementById("days").innerText = d;
-  document.getElementById("hours").innerText = h;
-  document.getElementById("minutes").innerText = m;
-  document.getElementById("seconds").innerText = s;
+},1000)
+
+
+function animate(id,value){
+
+const el=document.getElementById(id)
+
+if(el.innerHTML!=value){
+
+el.style.transform="scale(1.2)"
+el.style.transition=".3s"
+
+setTimeout(()=>{
+el.style.transform="scale(1)"
+},200)
+
 }
 
-setInterval(updateCountdown, 1000);
+el.innerHTML=value
+
+}
